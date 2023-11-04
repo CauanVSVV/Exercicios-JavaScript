@@ -1,0 +1,71 @@
+<!-- 
+
+[JS-A11]Em uma aplicação web, você precisa fazer uma requisição para uma API
+que retorna uma lista de usuários em formato JSON. Utilize Promises e o método
+`fetch( )` para realizar a requisição e, em caso de sucesso, exibir o nome de
+cada usuário em uma lista não ordenada (ul) na página HTML. Caso ocorra algum
+erro na requisição, exiba uma mensagem de erro na página.   
+    
+-->>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Prova11</title>
+</head>
+<body>
+    <header>
+        <p class="sublinhado-gradiente">- API DE USUÁRIOS -</p>
+    </header>
+
+    <main>
+        <div class="conteudo">
+            <div class="conteudo-principal">
+                <h1 class="sublinhado-gradiente">Lista de Usuários</h1>
+                <div>
+                    <ul id="listaUsuario"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function exibirUsuarios(usuarios) {
+            const listaUsuario = document.getElementById('listaUsuario')
+            usuarios.forEach(usuario => {
+                const li = document.createElement('li');
+                li.style.fontSize = '25px';
+                li.style.padding = '10px';
+                li.textContent = `${usuario.name.first} ${usuario.name.last}`;
+                listaUsuario.appendChild(li);
+
+            });
+        }
+
+        function exibirErro(mensagem) {
+            const userList = document.getElementById('listaUsuario');
+            const li = document.createElement('li');
+            li.textContent = `Erro: ${mensagem}`;
+            li.style.color = 'red';
+            userList.appendChild(li);
+        }
+
+        fetch('https://randomuser.me/api/?results=10')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao obter usuário.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                exibirUsuarios(data.results);
+            })
+            .catch(error => {
+                exibirErro(error.mensagem);
+            })
+    </script>
+</body>
+</html>

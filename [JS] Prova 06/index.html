@@ -1,0 +1,78 @@
+<!--
+
+[JS-A06] Crie um objeto JSON com 3 objetos com chaves: id, email, senha. 
+Crie uma tabela e cada coluna será um dado do objeto, exemplo:
+
+
+
+const obj = [{"id": 1, "email": "email@email.com", "senha": "senha123"},
+             {"id": 2, "email": "infinity@email.com", "senha": "infinity123"}]
+
+
+id        email            senha
+
+1     email@email.com         senha123
+
+2    infinity@email.com        infinity123
+
+-->
+
+<DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Prova</title>
+<head>
+<body>
+    <header>
+        <h1>Tabela de Usuáriosh1>
+    <header>
+    <main>
+        <table class="tabela_usuario">
+            <thead>
+                <tr class="tabela_cabecalho">
+                    <th id="id">ID<th>
+                    <th id="email">Email<th>
+                    <th id="senha">Senha<th>
+                <tr>
+            <thead>
+            <tbody id="corpo_tabela">tbody>
+        <table>
+    <main>
+
+    <script>
+        const obj =[{
+            "id":1,
+            "email":"emailUsuario1@gmail.com",
+            "senha":"senha001"
+        },{
+            "id":2,
+            "email":"emailUsuario22@gmail.com",
+            "senha":"senha022"
+        },{
+            "id":3,
+            "email":"emailUsuario333@gmail.com",
+            "senha":"senha33"
+        }]
+
+        const corpo_tabela = document.getElementById("corpo_tabela")
+
+        obj.forEach(item => {
+            const row = document.createElement("tr");
+            const idCelula = document.createElement("td");
+            idCelula.textContent = item.id;
+            const emailCelula = document.createElement("td");
+            emailCelula.textContent = item.email;
+            const senhaCelula = document.createElement("td");
+            senhaCelula.textContent = item.senha;
+            row.appendChild(idCelula);
+            row.appendChild(emailCelula);
+            row.appendChild(senhaCelula);
+            corpo_tabela.appendChild(row);
+        });
+    </script>
+</body>
+</head>

@@ -1,0 +1,80 @@
+<!--
+
+[JS-A07]Crie uma função chamada "filtrarNumerosPares" que recebe um array
+como parâmetro e retorna um novo array apenas com os números pares. 
+Em seguida, adicione um evento de clique em um botão com o id "btn-filtrar" que 
+chama essa função e exibe o resultado em um elemento com o id "resultado". Caso o array 
+esteja vazio, exiba a mensagem "Não há números pares para exibir".
+
+-->
+
+<DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Prova</title>
+<head>
+<body>
+    <header>
+        <h1>Numeros Paresh1>
+    header>
+    <main>
+        <div class="conteudo">
+            <label for="input-numeros">Digite os numeros que serão adicionados. <b>Obs:b> Serparados por virgula.<br><label>
+            <input type="text" id="input-numeros">
+
+            <div>
+                <button id="btn-adicionar">Adicionar<button>
+                <button id="btn-filtrar">Filtrar Numeros Pares<button>
+            <div>
+            <div id="resultado"><div>
+        <div>
+    </main>
+
+    <script>
+        let numerosArray = [];
+
+        function filtrarNumerosPares(array) {
+            return array.filter(numero => numero % 2 === 0);
+        }
+
+        function exibirResultado(resultado) {
+            const resultadoElemento = document.getElementById('resultado');
+            resultadoElemento.innerHTML = resultado.length === 0
+                ? 'Não há números pares para exibir'
+                : resultado.join(', ');
+        }
+
+        function adicionarEventoAdicionar() {
+            const btnAdicionar = document.getElementById('btn-adicionar');
+            btnAdicionar.addEventListener('click', function () {
+                const inputNumeros = document.getElementById('input-numeros').value;
+                const array = inputNumeros.split(',').map(numero => parseInt(numero.trim()));
+                if (array.every(numero => !isNaN(numero))) {
+                    numerosArray = array;
+                    alert('Números adicionados com sucesso!');
+                } else {
+                    alert('Digite apenas números separados por vírgula.');
+                }
+            });
+        }
+
+        function adicionarEventoFiltrar() {
+            const btnFiltrar = document.getElementById('btn-filtrar');
+            btnFiltrar.addEventListener('click', function () {
+                const numerosPares = filtrarNumerosPares(numerosArray);
+                exibirResultado(numerosPares);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            adicionarEventoAdicionar();
+            adicionarEventoFiltrar();
+        });
+
+    </script>
+</body>
+</html>

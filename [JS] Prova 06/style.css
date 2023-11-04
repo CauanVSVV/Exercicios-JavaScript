@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300&family=Righteous&family=Sarala:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    background-color: #1b53bb;
+    padding: 10px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 100px;
+}
+
+.tabela_usuario {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+     padding: 10px;
+}
+
+th {
+    color: aliceblue;
+    background-color: #1b53bb;
+    font-size: 25px;
+}
+
+#id {
+    padding: 10px 20px;
+}
+
+#email {
+    padding: 10px 200px;
+}
+
+#senha{
+    padding: 10px 70px;
+}
+
+#corpo_tabela {
+    font-size: 25px;
+}
